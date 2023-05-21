@@ -162,13 +162,13 @@ p {
   cursor: pointer;
 }
 
-.book_shelf > .book_list > .book_item > .action > .green {
-  background-color: darkgreen;
+.green {
+  background-color: darkgreen !important;
   color: white;
 }
 
-.book_shelf > .book_list > .book_item > .action > .red {
-  background-color: darkred;
+.red {
+  background-color: darkred !important;
   color: white;
 }
 

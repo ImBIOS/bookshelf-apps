@@ -79,6 +79,23 @@ modals.edit.form.addEventListener('submit', function (e) {
   modals.edit.form.reset();
 });
 
+modals.delete.form.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const book = {
+    id: bookToEdit.id,
+    title: e.target.querySelector('#deleteBookTitle').value,
+    author: e.target.querySelector('#deleteBookAuthor').value,
+    year: e.target.querySelector('#deleteBookYear').value,
+    isComplete: e.target.querySelector('#deleteBookIsComplete')
+      .checked,
+  };
+
+  deleteBook(book.id);
+  modals.delete.modal.style.display = 'none';
+  modals.delete.form.reset();
+});
+
 // Initial load
 if (localStorage.getItem('books')) {
   books = JSON.parse(localStorage.getItem('books'));
@@ -113,7 +130,7 @@ function addBook(book) {
   renderData(books);
 }
 
-function removeBook(id) {
+function deleteBook(id) {
   const index = books.findIndex((book) => book.id === id);
   if (index !== -1) {
     books.splice(index, 1);

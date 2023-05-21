@@ -1,89 +1,164 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Bookshelf Apps</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
-        rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<header class="head_bar">
-  <h1 class="head_bar__title">Bookshelf Apps</h1>
-</header>
-<main>
-  <section class="input_section">
-    <h2>Masukkan Buku Baru</h2>
-    <form id="inputBook">
-      <div class="input">
-        <label for="inputBookTitle">Judul</label>
-        <input id="inputBookTitle" type="text" required>
-      </div>
-      <div class="input">
-        <label for="inputBookAuthor">Penulis</label>
-        <input id="inputBookAuthor" type="text" required>
-      </div>
-      <div class="input">
-        <label for="inputBookYear">Tahun</label>
-        <input id="inputBookYear" type="number" required>
-      </div>
-      <div class="input_inline">
-        <label for="inputBookIsComplete">Selesai dibaca</label>
-        <input id="inputBookIsComplete" type="checkbox">
-      </div>
-      <button id="bookSubmit" type="submit">Masukkan Buku ke rak <span>Belum selesai dibaca</span></button>
-    </form>
-  </section>
-  
-  <section class="search_section">
-    <h2>Cari Buku (Opsional)</h2>
-    <form id="searchBook">
-      <label for="searchBookTitle">Judul</label>
-      <input id="searchBookTitle" type="text">
-      <button id="searchSubmit" type="submit">Cari</button>
-    </form>
-  </section>
-  
-  <section class="book_shelf">
-    <h2>Belum selesai dibaca</h2>
-    
-    <div id="incompleteBookshelfList" class="book_list">
-<!--      <article class="book_item">-->
-<!--        <h3>Book Title</h3>-->
-<!--        <p>Penulis: John Doe</p>-->
-<!--        <p>Tahun: 2002</p>-->
-<!--    -->
-<!--        <div class="action">-->
-<!--          <button class="green">Selesai dibaca</button>-->
-<!--          <button class="red">Hapus buku</button>-->
-<!--        </div>-->
-<!--      </article>-->
-    </div>
-  </section>
-  
-  <section class="book_shelf">
-    <h2>Selesai dibaca</h2>
-    
-    <div id="completeBookshelfList" class="book_list">
-<!--      <article class="book_item">-->
-<!--        <h3>Book Title</h3>-->
-<!--        <p>Penulis: John Doe</p>-->
-<!--        <p>Tahun: 2002</p>-->
-<!--        -->
-<!--        <div class="action">-->
-<!--          <button class="green">Belum selesai di Baca</button>-->
-<!--          <button class="red">Hapus buku</button>-->
-<!--        </div>-->
-<!--      </article>-->
-    </div>
-  </section>
-</main>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Bookshelf Apps</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="head_bar">
+      <h1 class="head_bar__title">Bookshelf Apps</h1>
+    </header>
+    <main>
+      <section class="input_section">
+        <h2>Masukkan Buku Baru</h2>
+        <form id="inputBook">
+          <div class="input">
+            <label for="inputBookTitle">Judul</label>
+            <input id="inputBookTitle" type="text" required />
+          </div>
+          <div class="input">
+            <label for="inputBookAuthor">Penulis</label>
+            <input id="inputBookAuthor" type="text" required />
+          </div>
+          <div class="input">
+            <label for="inputBookYear">Tahun</label>
+            <input id="inputBookYear" type="number" required />
+          </div>
+          <div class="input_inline">
+            <label for="inputBookIsComplete">Selesai dibaca</label>
+            <input id="inputBookIsComplete" type="checkbox" />
+          </div>
+          <button id="bookSubmit" type="submit">
+            Masukkan Buku ke rak <span>Belum selesai dibaca</span>
+          </button>
+        </form>
+      </section>
 
-<script src="main.js"></script>
+      <section class="search_section">
+        <h2>Cari Buku (Opsional)</h2>
+        <form id="searchBook">
+          <label for="searchBookTitle">Judul</label>
+          <input id="searchBookTitle" type="text" />
+          <button id="searchSubmit" type="submit">Cari</button>
+        </form>
+      </section>
 
-</body>
+      <section class="book_shelf">
+        <h2>Belum selesai dibaca</h2>
+
+        <div id="incompleteBookshelfList" class="book_list">
+          <!-- Incomplete Book List -->
+        </div>
+      </section>
+
+      <section class="book_shelf">
+        <h2>Selesai dibaca</h2>
+
+        <div id="completeBookshelfList" class="book_list">
+          <!-- Completed Book List -->
+        </div>
+      </section>
+
+      <!-- Edit Modal - START -->
+      <section id="editModal" class="modal">
+        <div class="modal_content input_section">
+          <div>
+            <span id="editCloseButton" class="close_button"
+              >&times;</span
+            >
+          </div>
+          <form id="editBook">
+            <div class="input">
+              <label for="editBookTitle">Judul</label>
+              <input id="editBookTitle" type="text" required />
+            </div>
+            <div class="input">
+              <label for="editBookAuthor">Penulis</label>
+              <input id="editBookAuthor" type="text" required />
+            </div>
+            <div class="input">
+              <label for="editBookYear">Tahun</label>
+              <input id="editBookYear" type="number" required />
+            </div>
+            <div class="input_inline">
+              <label for="editBookIsComplete">Selesai dibaca</label>
+              <input id="editBookIsComplete" type="checkbox" />
+            </div>
+            <button id="bookEditSubmit" type="submit">
+              Simpan Perubahan
+            </button>
+          </form>
+        </div>
+      </section>
+      <!-- Edit Modal - END -->
+
+      <!-- Delete Modal - START -->
+      <section id="deleteModal" class="modal">
+        <div class="modal_content input_section">
+          <div>
+            <span id="deleteCloseButton" class="close_button"
+              >&times;</span
+            >
+          </div>
+          <form id="deleteBook">
+            <h2>Apakah anda yakin ingin menghapus buku ini?</h2>
+            <div class="input">
+              <label for="deleteBookTitle">Judul</label>
+              <input
+                id="deleteBookTitle"
+                type="text"
+                readonly
+                class="readonly_input"
+              />
+            </div>
+            <div class="input">
+              <label for="deleteBookAuthor">Penulis</label>
+              <input
+                id="deleteBookAuthor"
+                type="text"
+                readonly
+                class="readonly_input"
+              />
+            </div>
+            <div class="input">
+              <label for="deleteBookYear">Tahun</label>
+              <input
+                id="deleteBookYear"
+                type="number"
+                class="readonly_input"
+                readonly
+              />
+            </div>
+            <div class="input_inline">
+              <label for="deleteBookIsComplete">Selesai dibaca</label>
+              <input
+                id="deleteBookIsComplete"
+                type="checkbox"
+                class="readonly_input"
+                onclick="return false;"
+                readonly
+              />
+            </div>
+            <button id="bookDeleteSubmit" class="red" type="submit">
+              Hapus buku
+            </button>
+          </form>
+        </div>
+      </section>
+      <!-- Delete Modal - END -->
+    </main>
+
+    <script src="main.js"></script>
+  </body>
 </html>

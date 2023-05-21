@@ -2,6 +2,26 @@
 let books = JSON.parse(localStorage.getItem('books')) || [];
 let bookToEdit;
 
+/**
+ * Sanitize string to prevent XSS attack
+ * @param {string} str - String to be sanitized
+ * @returns {string}
+ */
+const sanitize = (str) => {
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#x27;',
+    '/': '&#x2F;',
+  };
+  const reg = /[&<>"'/]/gi;
+  return str.replace(reg, (match) => {
+    return map[match];
+  });
+};
+
 // Define modals and forms
 const modals = {
   delete: {
@@ -128,9 +148,9 @@ function renderData(data) {
     bookElement.classList.add('book_item');
 
     bookElement.innerHTML = `
-      <h3>${book.title}</h3>
-      <p>Penulis: ${book.author}</p>
-      <p>Tahun: ${book.year}</p>
+      <h3>${sanitize(book.title)}</h3>
+      <p>Penulis: ${sanitize(book.author)}</p>
+      <p>Tahun: ${sanitize(book.year)}</p>
       <div class="action">
         <button class="change-status green">${
           book.isComplete ? 'Belum selesai di Baca' : 'Selesai dibaca'
